@@ -1,3 +1,4 @@
+
 /*
 ** light.c for raytracer1 in /home/tsuna
 ** 
@@ -5,7 +6,7 @@
 ** Login   <martin.van-elslande@epitech.eu>
 ** 
 ** Started on  Wed Feb 22 23:54:10 2017 Martin Van Elslande
-** Last update Thu Feb 23 11:25:49 2017 Martin Van Elslande
+** Last update Thu Feb 23 11:56:25 2017 Martin Van Elslande
 */
 
 #include	<SFML/Graphics.h>
