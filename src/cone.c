@@ -5,35 +5,48 @@
 ** Login   <martin.van-elslande@epitech.eu>
 ** 
 ** Started on  Wed Feb 22 22:24:14 2017 Martin Van Elslande
-** Last update Fri Feb 24 17:02:18 2017 Martin Van Elslande
+** Last update Wed Mar  8 09:35:58 2017 Martin Van Elslande
 */
 
 #include	<SFML/Graphics.h>
 #include	<math.h>
+#include	<stdlib.h>
+#include	"intersect.h"
 
-float	intersect_cone(sfVector3f eye_pos, sfVector3f dir_vector, float semiangle)
+int		get_delta(sfVector3f eye_pos, sfVector3f dir_vector,
+			  float semiangle, t_inter *cone)
 {
-  float	a;
-  float	b;
-  float	c;
-  float	delta;
-  float	k1;
-  float	k2;
+  cone->a = powf(dir_vector.x, 2.0f) + powf(dir_vector.y, 2.0f) -
+    (powf(dir_vector.z, 2.0f) * powf(tanf((semiangle) *
+					 M_PI / 180.0f), 2.0f));
+  cone->b = 2.0f * (dir_vector.x * eye_pos.x + dir_vector.y * eye_pos.y -
+		    ((dir_vector.y * eye_pos.y) *
+		     powf(tanf((semiangle) * M_PI / 180.0f), 2.0f)));
+  cone->c = powf(eye_pos.x, 2.0f) + powf(eye_pos.y, 2.0f) -
+    (powf(eye_pos.z, 2.0f) * powf(tanf((semiangle) *
+				      M_PI / 180.0f), 2.0f));
+  cone->delta = powf(cone->b, 2.0f) - 4.0f * cone->a * cone->c;
+  if (cone->a == 0 && cone->b == 0)
+    return (1);
+  return (0);
+}
 
-  a = powf(dir_vector.x, 2.0f) + powf(dir_vector.y, 2.0f) - (powf(dir_vector.z, 2.0f) / powf(tan((90.0f - semiangle) * M_PI / 180.0f), 2.0f));
-  b = 2.0f * (dir_vector.x * eye_pos.x + dir_vector.y * eye_pos.y - ((dir_vector.y * eye_pos.y) / powf(tan((90.0f - semiangle) * M_PI / 180.0f), 2.0f)));
-  c = powf(eye_pos.x, 2.0f) + powf(eye_pos.y, 2.0f) - (powf(eye_pos.z, 2.0f) / powf(tan((90.0f - semiangle) * M_PI / 180.0f), 2.0f));
-  delta = powf(b, 2.0f) - 4.0f * a * c;
-  if (a == 0 && b == 0)
-    return (0.0f);
-  if (delta < 0)
+float		intersect_cone(sfVector3f eye_pos, sfVector3f dir_vector,
+			       float semiangle)
+{
+  t_inter	*cone;
+  float		k1;
+  float		k2;
+
+  cone = malloc(sizeof(t_inter));
+  if (cone->delta < 0)
     return (-1.0f);
-  else if (delta == 0)
-    return ((b * (-1)) / (2.0f * a));
+  else if (cone->delta == 0.0f)
+    return ((cone->b * (-1)) / (2.0f * cone->a));
   else
     {
-      k1 = ((b * (-1)) + sqrt(delta)) / (2.0f * a);
-      k2 = ((b * (-1)) - sqrt(delta)) / (2.0f * a);
+      k1 = ((cone->b * (-1)) + sqrt(cone->delta)) / (2.0f * cone->a);
+      k2 = ((cone->b * (-1)) - sqrt(cone->delta)) / (2.0f * cone->a);
       if (k1 < 0 && k2 < 0)
         return (-1.0f);
       if (k1 > k2)
@@ -46,11 +59,13 @@ float	intersect_cone(sfVector3f eye_pos, sfVector3f dir_vector, float semiangle)
   return (0.0f);
 }
 
-sfVector3f	get_normal_cone(sfVector3f intersection_point, float semiangle)
+sfVector3f	get_normal_cone(sfVector3f intersection_point,
+				float semiangle)
 {
   float		rad;
 
   rad = (90.0f - semiangle) * M_PI / 180.0f;
-  intersection_point.z = (fabs(intersection_point.z) / (intersection_point.z * -1)) * rad;
+  intersection_point.z = (fabs(intersection_point.z) /
+			  (intersection_point.z * -1)) * rad;
   return (intersection_point);
 }
