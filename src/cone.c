@@ -5,7 +5,7 @@
 ** Login   <martin.van-elslande@epitech.eu>
 ** 
 ** Started on  Wed Feb 22 22:24:14 2017 Martin Van Elslande
-** Last update Wed Mar  8 09:38:25 2017 Martin Van Elslande
+** Last update Wed Mar  8 15:43:43 2017 Martin Van Elslande
 */
 
 #include	<SFML/Graphics.h>
@@ -65,8 +65,7 @@ sfVector3f	get_normal_cone(sfVector3f intersection_point,
 {
   float		rad;
 
-  rad = (90.0f - semiangle) * M_PI / 180.0f;
-  intersection_point.z = (fabs(intersection_point.z) /
-			  (intersection_point.z * -1)) * rad;
+  rad = (semiangle) * M_PI / 180.0f;
+  intersection_point.z = powf(tanf(semiangle * M_PI / 180.0f), 2.0f) * intersection_point.z;
   return (intersection_point);
 }
