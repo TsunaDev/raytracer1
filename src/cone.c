@@ -5,7 +5,7 @@
 ** Login   <martin.van-elslande@epitech.eu>
 ** 
 ** Started on  Wed Feb 22 22:24:14 2017 Martin Van Elslande
-** Last update Wed Mar  8 09:35:58 2017 Martin Van Elslande
+** Last update Wed Mar  8 09:38:25 2017 Martin Van Elslande
 */
 
 #include	<SFML/Graphics.h>
@@ -39,6 +39,7 @@ float		intersect_cone(sfVector3f eye_pos, sfVector3f dir_vector,
   float		k2;
 
   cone = malloc(sizeof(t_inter));
+  get_delta(eye_pos, dir_vector, semiangle, cone);
   if (cone->delta < 0)
     return (-1.0f);
   else if (cone->delta == 0.0f)
