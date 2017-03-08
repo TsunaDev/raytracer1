@@ -5,11 +5,46 @@
 ** Login   <martin.van-elslande@epitech.eu>
 ** 
 ** Started on  Wed Feb 22 22:16:06 2017 Martin Van Elslande
-** Last update Wed Feb 22 23:21:14 2017 Martin Van Elslande
+** Last update Wed Mar  8 10:31:19 2017 Martin Van Elslande
 */
 
 #include	<SFML/Graphics.h>
 #include	<math.h>
+#include	"raytracer.h"
+
+float	u_intersect_cylinder(sfVector3f eye_pos, sfVector3f dir_vector, t_obj *obj)
+{
+  float	a;
+  float	b;
+  float	c;
+  float	delta;
+  float	x1;
+  float	x2;
+
+  eye_pos = translate(eye_pos, obj->coords);
+  a = powf(dir_vector.x, 2.0f) + powf(dir_vector.y, 2.0f);
+  b = 2.0f * (dir_vector.x * eye_pos.x + dir_vector.y * eye_pos.y);
+  c = powf(eye_pos.x, 2.0f) + powf(eye_pos.y, 2.0f) - powf(obj->radius, 2.0f);
+  delta = powf(b, 2.0f) - 4.0f * a * c;
+  if (delta < 0)
+    return (-1.0f);
+  else if (delta == 0)
+    return ((b * (-1)) / (2.0f * a));
+  else
+    {
+      x1 = ((b * (-1)) + sqrt(delta)) / (2.0f * a);
+      x2 = ((b * (-1)) - sqrt(delta)) / (2.0f * a);
+      if (x1 < 0 && x2 < 0)
+        return (-1.0f);
+      if (x1 > x2)
+        return ((x2 > 0) ? (x2) : (x1));
+      else if (x2 > x1)
+        return ((x1 > 0) ? (x1) : (x2));
+      else
+        return (-1.0f);
+    }
+  return (0.0f);
+}
 
 float	intersect_cylinder(sfVector3f eye_pos, sfVector3f dir_vector, float radius)
 {
@@ -27,7 +62,12 @@ float	intersect_cylinder(sfVector3f eye_pos, sfVector3f dir_vector, float radius
   if (delta < 0)
     return (-1.0f);
   else if (delta == 0)
-    return ((b * (-1)) / (2.0f * a));
+    {
+      x1 = (b * (-1)) / (2.0f * a);
+      if (x1 < 0)
+	return (-1.0f);
+      return (x1);
+    }
   else
     {
       x1 = ((b * (-1)) + sqrt(delta)) / (2.0f * a);
