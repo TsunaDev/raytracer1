@@ -5,7 +5,7 @@
 ** Login   <martin.van-elslande@epitech.eu>
 ** 
 ** Started on  Wed Feb 22 22:24:14 2017 Martin Van Elslande
-** Last update Fri Mar 17 13:52:32 2017 Martin Van Elslande
+** Last update Fri Mar 17 14:15:25 2017 Martin Van Elslande
 */
 
 #include	<SFML/Graphics.h>
@@ -119,11 +119,6 @@ float		intersect_cone(sfVector3f eye_pos, sfVector3f dir_vector,
     }
   return (0.0f);
 }
-
-/*
-** semiangle = (90.0f - semiangle) * M_PI / 180.0f;
-**intersection_point.z = (fabsf(intersection_point.z) / -intersection_point.z) * tanf(semiangle);
-*/
 
 sfVector3f	get_normal_cone(sfVector3f intersection_point,
 				float semiangle)
