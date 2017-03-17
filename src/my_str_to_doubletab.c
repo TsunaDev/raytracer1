@@ -5,10 +5,11 @@
 ** Login   <martin_v@epitech.net>
 ** 
 ** Started on  Wed Oct 12 16:53:36 2016 Martin Van Elslande
-** Last update Tue Mar 14 18:17:41 2017 Martin Van Elslande
+** Last update Wed Mar 15 18:40:13 2017 Martin Van Elslande
 */
 
 #include	<stdlib.h>
+#include	<unistd.h>
 
 double	my_atof(char *);
 
@@ -59,11 +60,21 @@ double		*my_str_to_doubletab(char *str)
   double	*array;
   int		number_words;
 
-  if (str == 0)
-    return (0);
+  if (!str)
+    return (NULL);
   number_words = number_of_words(str, 0, 0);
-  if (number_words != 9)
-    return (0);
+  if (number_words != 12)
+    {
+      if (str[0] >= '0' && str[0] <= '9')
+	{
+	  write(1, "Error on line: \n", 16);
+	  write(1, str, my_strlen(str));
+	  write(1, "\n\n", 2);
+	  write(1, "You have to put 12 arguments in the config file,", 48);
+	  write(1, "not more, not less !\n", 21);
+	}
+      return (NULL);
+    }
   if ((array = malloc(sizeof(double) * number_words)) == NULL)
     return (NULL);
   process(str, array);

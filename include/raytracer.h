@@ -5,7 +5,7 @@
 ** Login   <martin.van-elslande@epitech.eu>
 ** 
 ** Started on  Tue Feb  7 10:04:46 2017 Martin Van Elslande
-** Last update Wed Mar 15 10:54:06 2017 Martin Van Elslande
+** Last update Wed Mar 15 18:14:41 2017 Martin Van Elslande
 */
 
 #ifndef		RAY_TRACER_
@@ -20,13 +20,6 @@ typedef	struct	s_my_framebuffer
   int		width;
   int		height;
 }		t_my_framebuffer;
-
-typedef struct	s_vector3d
-{
-  double	x;
-  double	y;
-  double	z;
-}		t_vector3d;
 
 typedef struct          s_obj
 {

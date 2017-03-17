@@ -5,7 +5,7 @@
 ## Login   <martin.van-elslande@epitech.eu>
 ## 
 ## Started on  Tue Mar 14 18:01:15 2017 Martin Van Elslande
-## Last update Tue Mar 14 18:12:28 2017 Martin Van Elslande
+## Last update Wed Mar 15 18:34:17 2017 Martin Van Elslande
 ##
 
 SRC	=	src/atof.c		\
@@ -19,6 +19,7 @@ SRC	=	src/atof.c		\
 		src/u_calc_dir_vector.c	\
 		src/window.c		\
 		src/light.c		\
+		src/rotate.c		\
 		src/raytracer.c		\
 		src/my_put_pixel.c	\
 		src/get_next_line.c	\
