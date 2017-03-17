@@ -5,7 +5,7 @@
 ** Login   <martin.van-elslande@epitech.eu>
 ** 
 ** Started on  Wed Feb 22 22:24:14 2017 Martin Van Elslande
-** Last update Fri Mar 17 14:15:25 2017 Martin Van Elslande
+** Last update Fri Mar 17 14:47:17 2017 Martin Van Elslande
 */
 
 #include	<SFML/Graphics.h>
@@ -55,11 +55,6 @@ int		get_delta(sfVector3f eye_pos, sfVector3f dir_vector,
     }
   return (0);
 }
-
-/*
-**else if (cone->a == 0)
-**  return (-cone->c / cone->b);
-*/
 
 float		u_intersect_cone(sfVector3f eye_pos, sfVector3f dir_vector,
 				 t_obj *obj)
