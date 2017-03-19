@@ -5,7 +5,7 @@
 ** Login   <martin.van-elslande@epitech.eu>
 ** 
 ** Started on  Tue Feb  7 10:04:46 2017 Martin Van Elslande
-** Last update Sun Mar 19 13:05:16 2017 Martin Van Elslande
+** Last update Sun Mar 19 20:13:38 2017 Martin Van Elslande
 */
 
 #ifndef		RAY_TRACER_
@@ -44,6 +44,7 @@ typedef struct		s_main_obj
 
 int			all_tasks(char *);
 int			my_getnbr(char *);
+int			my_strlen(char *);
 void			my_put_pixel(t_my_framebuffer *, int, int, sfColor);
 void			window_loop(sfRenderWindow *, sfSprite *);
 float                   intersect_sphere(sfVector3f, sfVector3f, float);
