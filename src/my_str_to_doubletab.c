@@ -1,11 +1,11 @@
 /*
-** my_str_to_wordtab.c for task 4 in /home/martin_v/pool/day8/clone1/CPool_Day08/task04
+** my_str_to_doubletab.c for raytracer1 in /home/tsuna/Epitech/projects/Infograph/raytracer/raytracer1
 ** 
 ** Made by Martin Van Elslande
-** Login   <martin_v@epitech.net>
+** Login   <martin.van-elslande@epitech.eu>
 ** 
-** Started on  Wed Oct 12 16:53:36 2016 Martin Van Elslande
-** Last update Wed Mar 15 18:40:13 2017 Martin Van Elslande
+** Started on  Sun Mar 19 21:57:38 2017 Martin Van Elslande
+** Last update Sun Mar 19 21:58:54 2017 Martin Van Elslande
 */
 
 #include	<stdlib.h>
@@ -55,6 +55,22 @@ void	process(char *str, double *array)
     }
 }
 
+int		check_line(char *str)
+{
+  int		i;
+
+  i = 0;
+  while (str[i])
+    {
+      if ((str[i] < '0' || str[i] > '9') && str[i] != '.' &&
+	  str[i] != '\t' && str[i] != ' ' && str[i] != '-' &&
+	  str[i] != '+')
+	return (0);
+      i++;
+    }
+  return (1);
+}
+
 double		*my_str_to_doubletab(char *str)
 {
   double	*array;
@@ -63,14 +79,16 @@ double		*my_str_to_doubletab(char *str)
   if (!str)
     return (NULL);
   number_words = number_of_words(str, 0, 0);
-  if (number_words != 12)
+  if (number_words != 12 || !check_line(str))
     {
-      if (str[0] >= '0' && str[0] <= '9')
+      if (str[0] != 't')
 	{
-	  write(1, "Error on line: \n", 16);
+	  write(2, "Error on line: \n", 16);
 	  write(1, str, my_strlen(str));
 	  write(1, "\n\n", 2);
-	  write(1, "You have to put 12 arguments in the config file,", 48);
+	  write(1, "You have to put 12 values (numbers) in the config file,",
+		55);
+	  write(1, " separated by tabulations, ", 27);
 	  write(1, "not more, not less !\n", 21);
 	}
       return (NULL);
