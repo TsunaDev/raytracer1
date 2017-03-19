@@ -5,7 +5,7 @@
 ** Login   <martin.van-elslande@epitech.eu>
 ** 
 ** Started on  Fri Mar 10 17:21:19 2017 Martin Van Elslande
-** Last update Sat Mar 18 23:44:47 2017 Martin Van Elslande
+** Last update Sun Mar 19 13:19:36 2017 Martin Van Elslande
 */
 
 #include		<SFML/Graphics.h>
@@ -64,10 +64,14 @@ int			determine_pixel_color(t_main_obj *main_obj,
   sfColor		color;
   t_obj			*obj;
 
+  main_obj->eye_angles.x = 30.0f;
+  main_obj->eye_angles.y = 30.0f;
+  main_obj->eye_angles.z = 30.0f;
   screen_size.x = SCREEN_WIDTH;
   screen_size.y = SCREEN_HEIGHT;
   obj = main_obj->objhead;
   dir_vector = u_calc_dir_vector(screen_size, screen_pos);
+  dir_vector = rotate_xyz(dir_vector, main_obj->eye_angles);
   k = get_nearest_form(obj, dir_vector, main_obj->eye_pos,
 		       main_obj->nearest_object);
   if (k > 0.0f)
@@ -91,9 +95,9 @@ void			create_raytrace(t_my_framebuffer *framebuffer,
   screen_pos.y = 0;
   if ((main_obj = malloc(sizeof(t_main_obj))) == NULL)
     return ;
-  main_obj->eye_pos.x = -400.0f;
-  main_obj->eye_pos.y = 0.0f;
-  main_obj->eye_pos.z = 50.0f;
+  main_obj->eye_pos.x = -200.0f;
+  main_obj->eye_pos.y = -200.0f;
+  main_obj->eye_pos.z = 400.0f;
   main_obj->light_obj = obj;
   obj = obj->next;
   main_obj->objhead = obj;

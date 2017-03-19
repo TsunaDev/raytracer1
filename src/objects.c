@@ -5,7 +5,7 @@
 ** Login   <martin.van-elslande@epitech.eu>
 ** 
 ** Started on  Sat Mar 18 21:24:36 2017 Martin Van Elslande
-** Last update Sat Mar 18 21:32:42 2017 Martin Van Elslande
+** Last update Sun Mar 19 13:12:07 2017 Martin Van Elslande
 */
 
 #include		<SFML/Graphics.h>
@@ -54,7 +54,7 @@ void			set_light(t_obj *obj)
 {
   obj->id = 0;
   obj->type = 0;
-  obj->coords.x = -40.0f;
+  obj->coords.x = 360.0f;
   obj->coords.y = -100.0f;
   obj->coords.z = 50.0f;
   obj->color = sfWhite;

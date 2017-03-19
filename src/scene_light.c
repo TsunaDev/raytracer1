@@ -5,7 +5,7 @@
 ** Login   <martin.van-elslande@epitech.eu>
 ** 
 ** Started on  Sat Mar 18 21:34:12 2017 Martin Van Elslande
-** Last update Sat Mar 18 21:37:46 2017 Martin Van Elslande
+** Last update Sun Mar 19 13:12:44 2017 Martin Van Elslande
 */
 
 #include		<SFML/Graphics.h>
@@ -46,9 +46,11 @@ sfColor                 set_shadows(t_obj *nearest_object, t_obj *light_obj,
   sfColor               color;
   sfVector3f            light_vector;
   sfVector3f            inter2;
+  sfVector3f		light;
 
   inter2 = r_translate(intersection, nearest_object->coords);
-  light_vector = set_light_vector(light_obj->coords, inter2);
+  light = r_translate(light_obj->coords, nearest_object->coords);
+  light_vector = set_light_vector(light, inter2);
   color = nearest_object->color;
   color.r = nearest_object->color.r *
     get_light_coef(light_vector, get_normal(intersection, nearest_object))

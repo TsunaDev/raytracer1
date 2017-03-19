@@ -5,7 +5,7 @@
 ** Login   <martin.van-elslande@epitech.eu>
 ** 
 ** Started on  Tue Feb  7 10:04:46 2017 Martin Van Elslande
-** Last update Sat Mar 18 23:21:32 2017 Martin Van Elslande
+** Last update Sun Mar 19 13:05:16 2017 Martin Van Elslande
 */
 
 #ifndef		RAY_TRACER_
@@ -39,6 +39,7 @@ typedef struct		s_main_obj
   t_obj			*objhead;
   t_obj			*nearest_object;
   sfVector3f		eye_pos;
+  sfVector3f		eye_angles;
 }			t_main_obj;
 
 int			all_tasks(char *);
