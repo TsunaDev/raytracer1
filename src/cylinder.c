@@ -5,18 +5,18 @@
 ** Login   <martin.van-elslande@epitech.eu>
 ** 
 ** Started on  Wed Feb 22 22:16:06 2017 Martin Van Elslande
-** Last update Fri Mar 17 14:49:36 2017 Martin Van Elslande
+** Last update Sat Mar 18 23:41:09 2017 Martin Van Elslande
 */
 
 #include	<SFML/Graphics.h>
 #include	<math.h>
 #include	"raytracer.h"
 
-static float	get_k(float a, float b, float c, float delta)
+static float	get_k(float a, float b, float delta)
 {
   float	x1;
   float	x2;
-  
+
   x1 = ((b * (-1)) + sqrt(delta)) / (2.0f * a);
   x2 = ((b * (-1)) - sqrt(delta)) / (2.0f * a);
   if (x1 < 0 && x2 < 0)
@@ -37,8 +37,6 @@ float	u_intersect_cylinder(sfVector3f eye_pos, sfVector3f dir_vector,
   float	b;
   float	c;
   float	delta;
-  float	x1;
-  float	x2;
 
   eye_pos = r_translate(eye_pos, obj->coords);
   a = powf(dir_vector.x, 2.0f) + powf(dir_vector.y, 2.0f);
@@ -49,10 +47,11 @@ float	u_intersect_cylinder(sfVector3f eye_pos, sfVector3f dir_vector,
     return (-1.0f);
   else if (delta == 0)
     return ((b * (-1)) / (2.0f * a));
-  return (get_k(a, b, c, delta));
+  return (get_k(a, b, delta));
 }
 
-float	intersect_cylinder(sfVector3f eye_pos, sfVector3f dir_vector, float radius)
+float	intersect_cylinder(sfVector3f eye_pos, sfVector3f dir_vector,
+			   float radius)
 {
   float	a;
   float	b;
@@ -73,7 +72,7 @@ float	intersect_cylinder(sfVector3f eye_pos, sfVector3f dir_vector, float radius
 	return (-1.0f);
       return (k);
     }
-  return (get_k(a, b, c, delta));
+  return (get_k(a, b, delta));
 }
 
 sfVector3f	get_normal_cylinder(sfVector3f intersection_point)

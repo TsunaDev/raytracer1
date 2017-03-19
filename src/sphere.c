@@ -5,14 +5,14 @@
 ** Login   <martin.van-elslande@epitech.eu>
 ** 
 ** Started on  Tue Feb  7 09:38:45 2017 Martin Van Elslande
-** Last update Fri Mar 17 14:55:29 2017 Martin Van Elslande
+** Last update Sat Mar 18 23:43:01 2017 Martin Van Elslande
 */
 
 #include	<math.h>
 #include	<SFML/Graphics.h>
 #include	"raytracer.h"
 
-static float	get_k(float a, float b, float c, float delta)
+static float	get_k(float a, float b, float delta)
 {
   float x1;
   float x2;
@@ -30,8 +30,8 @@ static float	get_k(float a, float b, float c, float delta)
   return (0.0f);
 }
 
-
-float	intersect_sphere(sfVector3f eye_pos, sfVector3f dir_vector, float radius)
+float	intersect_sphere(sfVector3f eye_pos, sfVector3f dir_vector,
+			 float radius)
 {
   float	a;
   float	b;
@@ -39,9 +39,12 @@ float	intersect_sphere(sfVector3f eye_pos, sfVector3f dir_vector, float radius)
   float	delta;
   float	k;
 
-  a = powf(dir_vector.x, 2.0f) + powf(dir_vector.y, 2.0f) + powf(dir_vector.z, 2.0f);
-  b = 2.0f * (dir_vector.x * eye_pos.x + eye_pos.y * dir_vector.y + eye_pos.z * dir_vector.z);
-  c = powf(eye_pos.x, 2.0f) + powf(eye_pos.y, 2.0f) + powf(eye_pos.z, 2.0f) - radius * radius;
+  a = powf(dir_vector.x, 2.0f) + powf(dir_vector.y, 2.0f) +
+    powf(dir_vector.z, 2.0f);
+  b = 2.0f * (dir_vector.x * eye_pos.x + eye_pos.y *
+	      dir_vector.y + eye_pos.z * dir_vector.z);
+  c = powf(eye_pos.x, 2.0f) + powf(eye_pos.y, 2.0f) +
+    powf(eye_pos.z, 2.0f) - radius * radius;
   delta = (b * b) - 4 * a * c;
   if (delta < 0)
     return (-1.0f);
@@ -52,7 +55,7 @@ float	intersect_sphere(sfVector3f eye_pos, sfVector3f dir_vector, float radius)
 	return (-1.0f);
       return (k);
     }
-  return (get_k(a, b, c, delta));
+  return (get_k(a, b, delta));
 }
 
 float	u_intersect_sphere(sfVector3f eye_pos, sfVector3f dir_vector,
@@ -81,7 +84,7 @@ float	u_intersect_sphere(sfVector3f eye_pos, sfVector3f dir_vector,
 	return (-1.0f);
       return (k);
     }
-  return (get_k(a, b, c, delta));
+  return (get_k(a, b, delta));
 }
 
 sfVector3f	get_normal_sphere(sfVector3f intersection_point)

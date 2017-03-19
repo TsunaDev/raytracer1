@@ -5,13 +5,14 @@
 ** Login   <martin.van-elslande@epitech.eu>
 ** 
 ** Started on  Tue Feb  7 11:25:47 2017 Martin Van Elslande
-** Last update Tue Feb 28 17:13:50 2017 Martin Van Elslande
+** Last update Sat Mar 18 23:41:28 2017 Martin Van Elslande
 */
 
 #include	<SFML/Graphics.h>
 #include	"raytracer.h"
 
-float	u_intersect_plane(sfVector3f eye_pos, sfVector3f dir_vector, t_obj *obj)
+float	u_intersect_plane(sfVector3f eye_pos, sfVector3f dir_vector,
+			  t_obj *obj)
 {
   float	k;
 
