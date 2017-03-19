@@ -5,7 +5,7 @@
 ** Login   <martin.van-elslande@epitech.eu>
 ** 
 ** Started on  Wed Feb 22 22:16:06 2017 Martin Van Elslande
-** Last update Sat Mar 18 23:41:09 2017 Martin Van Elslande
+** Last update Sun Mar 19 12:16:15 2017 Martin Van Elslande
 */
 
 #include	<SFML/Graphics.h>
@@ -39,6 +39,7 @@ float	u_intersect_cylinder(sfVector3f eye_pos, sfVector3f dir_vector,
   float	delta;
 
   eye_pos = r_translate(eye_pos, obj->coords);
+  dir_vector = rotate_xyz(dir_vector, obj->angles);
   a = powf(dir_vector.x, 2.0f) + powf(dir_vector.y, 2.0f);
   b = 2.0f * (dir_vector.x * eye_pos.x + dir_vector.y * eye_pos.y);
   c = powf(eye_pos.x, 2.0f) + powf(eye_pos.y, 2.0f) - powf(obj->radius, 2.0f);
