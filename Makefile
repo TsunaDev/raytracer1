@@ -1,11 +1,8 @@
 ##
-## Makefile for raytracer1 in /home/tsuna/Epitech/projects/Infograph/raytracer/raytracer1
-## 
-## Made by Martin Van Elslande
-## Login   <martin.van-elslande@epitech.eu>
-## 
-## Started on  Tue Mar 14 18:01:15 2017 Martin Van Elslande
-## Last update Sat Mar 18 21:38:07 2017 Martin Van Elslande
+## EPITECH PROJECT, 2017
+## raytracer1
+## File description:
+## raytracer's makefile
 ##
 
 SRC	=	src/atof.c		\

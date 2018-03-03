@@ -1,5 +1,5 @@
 /*
-** EPITECH PROJECT, 2018
+** EPITECH PROJECT, 2017
 ** raytracer1
 ** File description:
 ** object translate functions

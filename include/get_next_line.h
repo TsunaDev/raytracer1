@@ -1,11 +1,8 @@
 /*
-** get_next_line.h for get_next_line in /home/tsuna/Epitech/projects/prog_elem/GNL/CPE_2016_getnextline
-** 
-** Made by Martin Van Elslande
-** Login   <martin.van-elslande@epitech.eu>
-** 
-** Started on  Mon Jan  2 23:38:58 2017 Martin Van Elslande
-** Last update Sun Mar  5 17:03:27 2017 Martin Van Elslande
+** EPITECH PROJECT, 2017
+** raytracer1
+** File description:
+** gnl's include
 */
 
 #ifndef		READ_SIZE

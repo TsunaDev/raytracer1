@@ -1,11 +1,8 @@
 /*
-** raytracer.h for raytracer1 in /home/tsuna/Epitech/projects/Infograph/raytracer/bsraytracer1
-** 
-** Made by Martin Van Elslande
-** Login   <martin.van-elslande@epitech.eu>
-** 
-** Started on  Tue Feb  7 10:04:46 2017 Martin Van Elslande
-** Last update Sun Mar 19 20:13:38 2017 Martin Van Elslande
+** EPITECH PROJECT, 2017
+** raytracer
+** File description:
+** raytracer's main include
 */
 
 #ifndef		RAY_TRACER_
